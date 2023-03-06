@@ -5,6 +5,7 @@
 package restoranapp.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
@@ -20,26 +21,24 @@ public class Stol extends Entitet {
     private int brojStola;
     @ManyToOne
     private Konobar konobar;
-    @OneToMany
-    private List<Gost> gosti;
 
     public Stol() {
         super();
-        gosti = new ArrayList<>();
     }
 
-    public Stol(int brojStola, Konobar konobar, List<Gost> gosti) {
+    public Stol(int brojStola, Konobar konobar) {
         this.brojStola = brojStola;
         this.konobar = konobar;
-        this.gosti = gosti;
     }
 
-    public Stol(int brojStola, Konobar konobar, List<Gost> gosti, int sifra) {
+    public Stol(int brojStola, Konobar konobar, int sifra) {
         super(sifra);
         this.brojStola = brojStola;
         this.konobar = konobar;
-        this.gosti = gosti;
     }
+    
+    
+    
     
 
     public int getBrojStola() {
@@ -57,15 +56,8 @@ public class Stol extends Entitet {
     public void setKonobar(Konobar konobar) {
         this.konobar = konobar;
     }
-
-    public List<Gost> getGosti() {
-        return gosti;
-    }
-
-    public void setGosti(List<Gost> gosti) {
-        this.gosti = gosti;
-    }
     
+
     
 
     

@@ -14,6 +14,7 @@ import restoranapp.util.PocetniInsert;
 public class Start {
 
     public static void main(String[] args) {
-        HibernateUtil.getSession();
+        
+        PocetniInsert.izvedi();
     }
 }

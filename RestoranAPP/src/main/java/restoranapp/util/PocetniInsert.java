@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import restoranapp.model.Artikl;
 import restoranapp.model.Gost;
 import restoranapp.model.Konobar;
+import restoranapp.model.Narudba;
 import restoranapp.model.Stol;
 
 /**
@@ -27,18 +28,24 @@ public class PocetniInsert {
     private List<Artikl> artikli;
     private List<Stol> stolovi;
     private Session session;
+    
+    public static void izvedi(){
+    new PocetniInsert();
+    }
 
     public PocetniInsert() {
         faker = new Faker();
         konobari = new ArrayList<>();
         gosti = new ArrayList<>();
         artikli = new ArrayList<>();
+        stolovi = new ArrayList<>();
         session = HibernateUtil.getSession();
         session.beginTransaction();
         kreirajKonobare();
-        kreirajGoste();
+        //kreirajGoste();
         kreirajArtikle();
         kreirajStolove();
+        kreirajNarudbu();
         session.getTransaction().commit();
 
     }
@@ -64,7 +71,7 @@ public class PocetniInsert {
             g = new Gost();
             g.setIme(faker.name().firstName());
             g.setPrezime(faker.name().lastName());
-            g.setIme(faker.phoneNumber().cellPhone());
+            g.setBrojTelefona(faker.phoneNumber().cellPhone());
             session.persist(g);
             gosti.add(g);
 
@@ -99,20 +106,41 @@ public class PocetniInsert {
 
     private void kreirajStolove() {
         Stol s;
-        List<Gost> a;
+        
 
         for (int i = 0; i < 10; i++) {
             s = new Stol();
             s.setBrojStola(i + 1);
-            s.setKonobar(konobari.get(sb(0, konobari.size())));
-            a = new ArrayList<>();
-            for (int j = 0; j < sb(2, 10); j++) {
-                a.add(gosti.get(sb(0, (gosti.size()))));
-            }
-            s.setGosti(gosti);
+            s.setKonobar(konobari.get(sb(0, 20)));
+            
+            
+            
             session.persist(s);
+            stolovi.add(s);
         }
+
+    
+    }
+    private void kreirajNarudbu() {
+        Narudba n;
+        List<Artikl> a;
+        
+       for(int i =0;i<50;i++){
+       n = new Narudba();
+       n.setStol(stolovi.get(sb(0,9)));
+       n.setNapomena(faker.ancient().titan());
+       n.setKolicina(faker.number().numberBetween(1,10));
+       a = new ArrayList<>();
+       for(int j = 0;j<sb(5, 10);j++){
+           a.add(artikli.get(sb(0,a.size())));
+           
+       }
+       n.setArtikli(a);
+       session.persist(n);
+       
+       }
+       }
 
     }
 
-}
+
