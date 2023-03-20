@@ -23,6 +23,7 @@
 <!--    <mapping class="restoranapp.model.Gost" />-->
     <mapping class="restoranapp.model.Stol" />
     <mapping class="restoranapp.model.Narudba" />
+    <mapping class="restoranapp.model.Operater" />
     
     
     

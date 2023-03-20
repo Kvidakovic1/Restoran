@@ -17,7 +17,7 @@ public class ObradaKonobar extends Obrada<Konobar> {
 
     @Override
     public List<Konobar> read() {
-        return session.createQuery("from Konobar", Konobar.class).list();
+        return session.createQuery("from Konobar order by ime", Konobar.class).list();
     }
 
     @Override
@@ -25,6 +25,7 @@ public class ObradaKonobar extends Obrada<Konobar> {
         kontrolaIme();
         kontrolaPrezime();
         kontrolaOib();
+        kontrolaIban();
 
     }
 
@@ -38,7 +39,7 @@ public class ObradaKonobar extends Obrada<Konobar> {
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        
+
     }
 
     private void kontrolaIme() throws EdunovaException {
@@ -48,7 +49,7 @@ public class ObradaKonobar extends Obrada<Konobar> {
     }
 
     private void kontrolaImeNull() throws EdunovaException {
-        if (entitet.getIme() == null) {
+        if (entitet.getIme().isEmpty()) {
             throw new EdunovaException("Ime mora biti postavljeno");
         }
     }
@@ -96,7 +97,7 @@ public class ObradaKonobar extends Obrada<Konobar> {
     }
 
     private void kontrolaPrezimeNull() throws EdunovaException {
-        if (entitet.getPrezime() == null) {
+        if (entitet.getPrezime().isEmpty()) {
             throw new EdunovaException("Prezime mora biti postavljeno");
         }
     }
@@ -110,6 +111,16 @@ public class ObradaKonobar extends Obrada<Konobar> {
     private void kontrolaOib() throws EdunovaException {
         if (!Alati.kontrolaOIB(entitet.getOib())) {
             throw new EdunovaException("Oib nije u dobrom formatu");
+        }
+    }
+
+    private void kontrolaIban() throws EdunovaException {
+        kontrolaIbanNull();
+    }
+
+    private void kontrolaIbanNull() throws EdunovaException {
+        if (entitet.getIban().isEmpty()) {
+            throw new EdunovaException("Iban mora biti postavljen");
         }
     }
 

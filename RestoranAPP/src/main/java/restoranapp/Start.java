@@ -6,6 +6,7 @@ package restoranapp;
 
 import restoranapp.util.HibernateUtil;
 import restoranapp.util.PocetniInsert;
+import view.SplashScreen;
 
 /**
  *
@@ -16,5 +17,7 @@ public class Start {
     public static void main(String[] args) {
         
         //PocetniInsert.izvedi();
+        
+        new SplashScreen().setVisible(true);
     }
 }

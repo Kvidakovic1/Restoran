@@ -86,6 +86,10 @@ public class Operater extends Entitet {
     public void setLozinka(char[] lozinka) {
         this.lozinka = lozinka;
     }
+    
+    public String getImePrezime(){
+        return ime + " " + prezime;
+    }
         
         
         
