@@ -6,6 +6,8 @@ package restoranapp.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Konobar extends Entitet {
@@ -14,6 +16,9 @@ public class Konobar extends Entitet {
     private String prezime;
     private String oib;
     private String iban;
+    
+    @OneToMany(mappedBy = "konobar")
+    private List<Stol> stolovi;
 
     public Konobar(String ime, String prezime, String oib, String iban, int sifra) {
         super(sifra);
@@ -60,8 +65,22 @@ public class Konobar extends Entitet {
         this.iban = iban;
     }
 
+    public List<Stol> getStolovi() {
+        return stolovi;
+    }
+
+    public void setStolovi(List<Stol> stolovi) {
+        this.stolovi = stolovi;
+    }
+    
+    
+
     @Override
     public String toString() {
+        return ime + " " + prezime;
+    }
+    
+    public String getImePrezime(){
         return ime + " " + prezime;
     }
     

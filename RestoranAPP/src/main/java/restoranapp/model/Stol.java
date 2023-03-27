@@ -56,6 +56,13 @@ public class Stol extends Entitet {
     public void setKonobar(Konobar konobar) {
         this.konobar = konobar;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(brojStola);
+    }
+    
+    
     
 
     

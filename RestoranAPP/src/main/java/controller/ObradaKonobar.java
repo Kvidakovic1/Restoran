@@ -6,6 +6,7 @@ package controller;
 
 import java.util.List;
 import restoranapp.model.Konobar;
+import restoranapp.model.Stol;
 import restoranapp.util.Alati;
 import restoranapp.util.EdunovaException;
 
@@ -35,11 +36,27 @@ public class ObradaKonobar extends Obrada<Konobar> {
         kontrolaImeNijeBroj();
         kontrolaImeMaksimalnaDuzina();
         kontrolaOib();
+        kontrolaIban();
+
     }
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
+        if (entitet.getStolovi() != null && !entitet.getStolovi().isEmpty()) {
 
+            StringBuilder sb = new StringBuilder();
+            sb.append("Konobar/ica ");
+            sb.append(entitet.getImePrezime());
+            sb.append(" se ne moze obrisati jer je zadužen/a za stolove pod brojem:");
+            sb.append("\n");
+            for (Stol s : entitet.getStolovi()) {
+                sb.append(s.getBrojStola());
+                sb.append("\n");
+
+            }
+            sb.append("--------");
+            throw new EdunovaException(sb.toString());
+        }
     }
 
     private void kontrolaIme() throws EdunovaException {
