@@ -66,6 +66,7 @@ public class ProzorIzbornik extends javax.swing.JFrame {
         btnKonobari = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         lblVrijeme = new javax.swing.JLabel();
+        btnArtikli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +87,13 @@ public class ProzorIzbornik extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
         jToolBar1.add(lblVrijeme);
 
+        btnArtikli.setText("Artikli");
+        btnArtikli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArtikliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,13 +106,17 @@ public class ProzorIzbornik extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(btnKonobari, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(btnArtikli, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(btnKonobari)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKonobari)
+                    .addComponent(btnArtikli))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addComponent(btnIzlaz)
                 .addGap(7, 7, 7)
@@ -123,11 +135,16 @@ public class ProzorIzbornik extends javax.swing.JFrame {
         new ProzorKonobar().setVisible(true);
     }//GEN-LAST:event_btnKonobariActionPerformed
 
+    private void btnArtikliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtikliActionPerformed
+       new ProzorArtikl().setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_btnArtikliActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArtikli;
     private javax.swing.JButton btnIzlaz;
     private javax.swing.JButton btnKonobari;
     private javax.swing.JToolBar jToolBar1;

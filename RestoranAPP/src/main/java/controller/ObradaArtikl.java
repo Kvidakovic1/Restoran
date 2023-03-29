@@ -28,6 +28,19 @@ public class ObradaArtikl extends Obrada<Artikl> {
         kontrolaCijena();
     }
 
+    public List<Artikl> read(String uvjet) {
+        uvjet = uvjet.trim();
+        uvjet = "%" + uvjet + "%";
+        return session.createQuery("from Artikl "
+                + " where concat(naziv) "
+                + " like :uvjet "
+                + " order by naziv ",
+                Artikl.class)
+                .setParameter("uvjet", uvjet)
+                .setMaxResults(12)
+                .list();
+    }
+
     @Override
     protected void kontrolaPromjena() throws EdunovaException {
         kontrolaNazivNull();
@@ -38,7 +51,7 @@ public class ObradaArtikl extends Obrada<Artikl> {
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     private void kontrolaNaziv() throws EdunovaException {
@@ -48,7 +61,7 @@ public class ObradaArtikl extends Obrada<Artikl> {
     }
 
     private void kontrolaNazivNull() throws EdunovaException {
-        if (entitet.getNaziv() == null) {
+        if (entitet.getNaziv().isEmpty()) {
             throw new EdunovaException("Naziv mora biti postavljen");
         }
     }

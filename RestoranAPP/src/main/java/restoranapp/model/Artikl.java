@@ -53,6 +53,12 @@ public class Artikl extends Entitet {
         this.cijena = cijena;
         this.kategorija = kategorija;
     }
+
+    @Override
+    public String toString() {
+        return naziv + " " + cijena.toString() + " €";
+    }
+    
     
     
     
