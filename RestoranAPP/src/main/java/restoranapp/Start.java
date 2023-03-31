@@ -18,6 +18,6 @@ public class Start {
         
         //PocetniInsert.izvedi();
         
-        new SplashScreen().setVisible(true);
+       new SplashScreen().setVisible(true);
     }
 }
