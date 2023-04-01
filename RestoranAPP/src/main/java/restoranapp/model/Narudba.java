@@ -18,19 +18,18 @@ import java.util.List;
 public class Narudba extends Entitet {
     @ManyToOne
     private Stol stol;
-    @ManyToMany
-    private List<Artikl> artikli;
+    
     private String napomena;
     private int kolicina;
 
     public Narudba() {
         super();
-        artikli = new ArrayList<>();
+        
     }
 
     public Narudba(Stol stol, List<Artikl> artikli, String napomena, int kolicina) {
         this.stol = stol;
-        this.artikli = artikli;
+        
         this.napomena = napomena;
         this.kolicina = kolicina;
     }
@@ -38,7 +37,7 @@ public class Narudba extends Entitet {
     public Narudba(Stol stol, List<Artikl> artikli, String napomena, int kolicina, int sifra) {
         super(sifra);
         this.stol = stol;
-        this.artikli = artikli;
+       
         this.napomena = napomena;
         this.kolicina = kolicina;
     }
@@ -53,13 +52,7 @@ public class Narudba extends Entitet {
         this.stol = stol;
     }
 
-    public List<Artikl> getArtikli() {
-        return artikli;
-    }
-
-    public void setArtikli(List<Artikl> artikli) {
-        this.artikli = artikli;
-    }
+   
 
     public String getNapomena() {
         return napomena;

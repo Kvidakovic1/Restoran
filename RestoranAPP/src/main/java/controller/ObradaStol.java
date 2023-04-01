@@ -12,7 +12,7 @@ import restoranapp.util.EdunovaException;
  *
  * @author Kristijan
  */
-public class ObradaStol extends Obrada {
+public class ObradaStol extends Obrada<Stol> {
 
     @Override
     public List<Stol> read() {
@@ -21,17 +21,17 @@ public class ObradaStol extends Obrada {
 
     @Override
     protected void kontrolaUnos() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     protected void kontrolaPromjena() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
 }

@@ -149,7 +149,7 @@ public class ProzorStol extends javax.swing.JFrame {
         var e = obrada.getEntitet();
         var a = obradaKonobar.getEntitet();
         
-        e.get
+        //e.get
         
        
     }
