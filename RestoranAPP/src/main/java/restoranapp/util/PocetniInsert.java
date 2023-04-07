@@ -30,7 +30,7 @@ public class PocetniInsert {
     private Session session;
     
     public static void izvedi(){
-    new PocetniInsert();
+    //new PocetniInsert();
     }
 
     public PocetniInsert() {
