@@ -6,10 +6,13 @@ package view;
 
 import controller.ObradaKonobar;
 import controller.ObradaStol;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import restoranapp.model.Konobar;
 import restoranapp.model.Stol;
 import restoranapp.util.Aplikacija;
+import restoranapp.util.EdunovaException;
 
 /**
  *
@@ -19,8 +22,7 @@ public class ProzorStol extends javax.swing.JFrame {
 
     private ObradaStol obrada;
     private ObradaKonobar obradaKonobar;
-    
-        
+
     /**
      * Creates new form ProzorStol
      */
@@ -28,8 +30,9 @@ public class ProzorStol extends javax.swing.JFrame {
         initComponents();
         obrada = new ObradaStol();
         obradaKonobar = new ObradaKonobar();
-        
+
         setTitle(Aplikacija.NAZIV_APP + ": " + Aplikacija.OPERATER.getImePrezime() + ": Stolovi");
+        ucitajKonobare();
         ucitaj();
     }
 
@@ -48,6 +51,9 @@ public class ProzorStol extends javax.swing.JFrame {
         cmbKonobari = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtBrojStola = new javax.swing.JTextField();
+        btnDodaj = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
+        btnBrisanje = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,7 +67,34 @@ public class ProzorStol extends javax.swing.JFrame {
 
         jLabel1.setText("Konobar");
 
+        cmbKonobari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbKonobariActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("BrojStola");
+
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
+        btnBrisanje.setText("Obriši");
+        btnBrisanje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrisanjeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,20 +105,25 @@ public class ProzorStol extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(cmbKonobari, 0, 228, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBrojStola))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(cmbKonobari, 0, 228, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBrojStola)))
-                        .addContainerGap())))
+                                .addComponent(btnDodaj)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPromjeni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnBrisanje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,6 +138,12 @@ public class ProzorStol extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbKonobari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDodaj)
+                            .addComponent(btnPromjeni))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBrisanje)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
@@ -110,10 +154,10 @@ public class ProzorStol extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
-        if(evt.getValueIsAdjusting()){
+        if (evt.getValueIsAdjusting()) {
             return;
         }
-        if(lstPodaci.getSelectedValue()==null){
+        if (lstPodaci.getSelectedValue() == null) {
             return;
         }
 
@@ -123,12 +167,61 @@ public class ProzorStol extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lstPodaciValueChanged
 
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Stol());
+        napuniModel();
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        if (lstPodaci.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite stol za promjenu");
+            return;
+        }
+        napuniModel();
+        try {
+            obrada.update();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
+        if (lstPodaci.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite stol za brisanje");
+            return;
+        }
+
+        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigoruno obrisati" + obrada.getEntitet().toString(), "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+            return;
+        }
+
+        try {
+            obrada.delete();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnBrisanjeActionPerformed
+
+    private void cmbKonobariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKonobariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbKonobariActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrisanje;
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnPromjeni;
     private javax.swing.JComboBox<Konobar> cmbKonobari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -138,19 +231,47 @@ public class ProzorStol extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void ucitaj() {
-        DefaultListModel<Stol> s = 
-                new DefaultListModel<>();
+        DefaultListModel<Stol> s
+                = new DefaultListModel<>();
         s.addAll(obrada.read());
         lstPodaci.setModel(s);
         lstPodaci.repaint();
     }
 
+    private void ucitajKonobare() {
+        DefaultComboBoxModel<Konobar> k = new DefaultComboBoxModel<>();
+        Konobar a = new Konobar();
+        a.setSifra(0);
+        a.setIme("Nije");
+        a.setPrezime("Odabrano");
+        k.addElement(a);
+        k.addAll(new ObradaKonobar().read());
+        cmbKonobari.setModel(k);
+        cmbKonobari.repaint();
+
+    }
+
     private void napuniView() {
         var e = obrada.getEntitet();
-        var a = obradaKonobar.getEntitet();
         
-        //e.get
+
+        txtBrojStola.setText(String.valueOf(e.getBrojStola()));
+        if (e.getKonobar() != null) {
+            cmbKonobari.setSelectedItem(e.getKonobar());
+        } else {
+            cmbKonobari.setSelectedIndex(0);
+        }
         
-       
+//        btnBrisanje.setVisible(false);
+//        if(e.getKonobar()== null){
+//            btnBrisanje.setVisible(true);
+//        }
+
+    }
+
+    private void napuniModel() {
+        var s = obrada.getEntitet();
+        s.setBrojStola(Integer.parseInt(txtBrojStola.getText()));
+        s.setKonobar((Konobar) cmbKonobari.getSelectedItem());
     }
 }

@@ -14,6 +14,7 @@ import restoranapp.model.Artikl;
 import restoranapp.model.Gost;
 import restoranapp.model.Konobar;
 import restoranapp.model.Narudba;
+import restoranapp.model.Stavka;
 import restoranapp.model.Stol;
 
 /**
@@ -27,10 +28,11 @@ public class PocetniInsert {
     private List<Gost> gosti;
     private List<Artikl> artikli;
     private List<Stol> stolovi;
+    private List<Narudba> narudbe;
     private Session session;
     
     public static void izvedi(){
-    //new PocetniInsert();
+    new PocetniInsert();
     }
 
     public PocetniInsert() {
@@ -39,6 +41,7 @@ public class PocetniInsert {
         gosti = new ArrayList<>();
         artikli = new ArrayList<>();
         stolovi = new ArrayList<>();
+        narudbe = new ArrayList<>();
         session = HibernateUtil.getSession();
         session.beginTransaction();
         kreirajKonobare();
@@ -46,6 +49,7 @@ public class PocetniInsert {
         kreirajArtikle();
         kreirajStolove();
         kreirajNarudbu();
+        kreirajStavke();
         session.getTransaction().commit();
 
     }
@@ -123,23 +127,36 @@ public class PocetniInsert {
     }
     private void kreirajNarudbu() {
         Narudba n;
-        List<Artikl> a;
+        
         
        for(int i =0;i<50;i++){
        n = new Narudba();
-       n.setStol(stolovi.get(sb(0,9)));
+       n.setStol(stolovi.get(sb(0,stolovi.size()-1)));
        n.setNapomena(faker.ancient().titan());
-       n.setKolicina(faker.number().numberBetween(1,10));
-       a = new ArrayList<>();
-       for(int j = 0;j<sb(5, 10);j++){
-           a.add(artikli.get(sb(0,a.size())));
-           
-       }
-       n.setArtikli(a);
+       
+       
+       
        session.persist(n);
+       narudbe.add(n);
        
        }
        }
+
+    private void kreirajStavke() {
+        Stavka s;
+        List<Artikl> a;
+        List<Narudba> n;
+        
+        for(int i =0;i<50;i++){
+          s = new Stavka();
+          s.setArtikl(artikli.get(sb(0, artikli.size()-1)));
+          s.setKolicina(sb(1, 10));
+          s.setNarudba(narudbe.get(sb(0, narudbe.size()-1)));
+          
+          session.persist(s);
+        }
+        
+    }
 
     }
 

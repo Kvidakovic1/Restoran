@@ -20,7 +20,7 @@ public class Narudba extends Entitet {
     private Stol stol;
     
     private String napomena;
-    private int kolicina;
+    
 
     public Narudba() {
         super();
@@ -31,7 +31,7 @@ public class Narudba extends Entitet {
         this.stol = stol;
         
         this.napomena = napomena;
-        this.kolicina = kolicina;
+        
     }
 
     public Narudba(Stol stol, List<Artikl> artikli, String napomena, int kolicina, int sifra) {
@@ -39,7 +39,7 @@ public class Narudba extends Entitet {
         this.stol = stol;
        
         this.napomena = napomena;
-        this.kolicina = kolicina;
+        
     }
     
     
@@ -62,13 +62,7 @@ public class Narudba extends Entitet {
         this.napomena = napomena;
     }
 
-    public int getKolicina() {
-        return kolicina;
-    }
-
-    public void setKolicina(int kolicina) {
-        this.kolicina = kolicina;
-    }
+    
 
     
     

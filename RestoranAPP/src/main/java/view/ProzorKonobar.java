@@ -59,7 +59,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
         txtOib = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtIban = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
         btnBrisanje = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -85,10 +85,10 @@ public class ProzorKonobar extends javax.swing.JFrame {
 
         jLabel4.setText("IBAN");
 
-        jButton1.setText("Dodaj");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDodajActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnDodaj)
                         .addGap(18, 18, 18)
                         .addComponent(btnPromjeni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -179,7 +179,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
                         .addComponent(txtIban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(btnDodaj)
                             .addComponent(btnPromjeni))
                         .addGap(18, 18, 18)
                         .addComponent(btnBrisanje)
@@ -197,7 +197,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Konobar());
         napuniModel();
         try {
@@ -206,7 +206,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
         if (evt.getValueIsAdjusting()) {
@@ -262,9 +262,9 @@ public class ProzorKonobar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrisanje;
+    private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnDovuciOib;
     private javax.swing.JButton btnPromjeni;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
