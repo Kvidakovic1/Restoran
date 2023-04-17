@@ -27,22 +27,16 @@ public class Narudba extends Entitet {
         
     }
 
-    public Narudba(Stol stol, List<Artikl> artikli, String napomena, int kolicina) {
+    public Narudba(Stol stol, String napomena) {
         this.stol = stol;
-        
         this.napomena = napomena;
-        
     }
 
-    public Narudba(Stol stol, List<Artikl> artikli, String napomena, int kolicina, int sifra) {
+    public Narudba(Stol stol, String napomena, int sifra) {
         super(sifra);
         this.stol = stol;
-       
         this.napomena = napomena;
-        
     }
-    
-    
 
     public Stol getStol() {
         return stol;
@@ -52,8 +46,6 @@ public class Narudba extends Entitet {
         this.stol = stol;
     }
 
-   
-
     public String getNapomena() {
         return napomena;
     }
@@ -62,6 +54,7 @@ public class Narudba extends Entitet {
         this.napomena = napomena;
     }
 
+    
     
 
     

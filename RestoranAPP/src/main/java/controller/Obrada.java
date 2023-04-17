@@ -66,6 +66,7 @@ public abstract class Obrada<T extends Entitet> {
         session.beginTransaction();
         session.persist(entitet);
         session.getTransaction().commit();
+        
     }
 
 }
