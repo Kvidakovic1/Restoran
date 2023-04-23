@@ -5,7 +5,7 @@
 package view;
 
 import controller.ObradaKonobar;
-import edunova.util.Alati;
+import restoranapp.util.Alati;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -38,6 +38,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
         k.addAll(obrada.read());
         lstPodaci.setModel(k);
         lstPodaci.repaint();
+        lstStolovi.repaint();
     }
 
     /**
