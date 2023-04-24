@@ -67,7 +67,8 @@ public class ProzorIzbornik extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         lblVrijeme = new javax.swing.JLabel();
         btnArtikli = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnStolovi = new javax.swing.JButton();
+        btnNarucivanje = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,10 +96,17 @@ public class ProzorIzbornik extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Stolovi");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnStolovi.setText("Stolovi");
+        btnStolovi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnStoloviActionPerformed(evt);
+            }
+        });
+
+        btnNarucivanje.setText("Narucivanje");
+        btnNarucivanje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNarucivanjeActionPerformed(evt);
             }
         });
 
@@ -114,10 +122,12 @@ public class ProzorIzbornik extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStolovi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnKonobari, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
                 .addGap(46, 46, 46)
-                .addComponent(btnArtikli, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnArtikli, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                    .addComponent(btnNarucivanje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,7 +138,9 @@ public class ProzorIzbornik extends javax.swing.JFrame {
                     .addComponent(btnKonobari)
                     .addComponent(btnArtikli))
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnStolovi)
+                    .addComponent(btnNarucivanje))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addComponent(btnIzlaz)
                 .addGap(7, 7, 7)
@@ -151,9 +163,13 @@ public class ProzorIzbornik extends javax.swing.JFrame {
        new ProzorArtikl().setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnArtikliActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnStoloviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStoloviActionPerformed
        new ProzorStol().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnStoloviActionPerformed
+
+    private void btnNarucivanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNarucivanjeActionPerformed
+        new ProzorNarucivanje().setVisible(true);
+    }//GEN-LAST:event_btnNarucivanjeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +179,8 @@ public class ProzorIzbornik extends javax.swing.JFrame {
     private javax.swing.JButton btnArtikli;
     private javax.swing.JButton btnIzlaz;
     private javax.swing.JButton btnKonobari;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnNarucivanje;
+    private javax.swing.JButton btnStolovi;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblVrijeme;
     // End of variables declaration//GEN-END:variables

@@ -136,7 +136,7 @@ public class ProzorArtikl extends javax.swing.JFrame {
 
         jLabel1.setText("Naziv");
 
-        jLabel2.setText("Cijena");
+        jLabel2.setText("Cijena(€)");
 
         jLabel3.setText("Kategorija");
 

@@ -4,17 +4,36 @@
  */
 package view;
 
+import controller.ObradaArtikl;
+import controller.ObradaNarudba;
+import controller.ObradaStol;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import restoranapp.model.Artikl;
+import restoranapp.model.Narudba;
+import restoranapp.model.Stol;
+import restoranapp.util.Aplikacija;
+import restoranapp.util.EdunovaException;
+
 /**
  *
  * @author Kristijan
  */
 public class ProzorNarucivanje extends javax.swing.JFrame {
-
+    private ObradaArtikl obrada;
+    private ObradaNarudba obradan;
     /**
      * Creates new form ProzorNarucivanje
      */
     public ProzorNarucivanje() {
         initComponents();
+        obrada = new ObradaArtikl();
+        obradan = new ObradaNarudba();
+        setTitle(Aplikacija.NAZIV_APP + ": " + Aplikacija.OPERATER.getIme() + ": Narucivanje");
+        ucitajNarudbe();
+        ucitajStolove();
     }
 
     /**
@@ -26,57 +45,323 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        txtUvjet = new javax.swing.JTextField();
+        btnPretraga = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstPodaci = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        btnArtikli = new javax.swing.JButton();
+        cmbStolovi = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txaNapomena = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstNarudbe = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        btnDodaj = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
+        btnBrisanje = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        txtUvjet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUvjetKeyPressed(evt);
+            }
+        });
+
+        btnPretraga.setText("🔎");
+        btnPretraga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPretragaActionPerformed(evt);
+            }
+        });
+
+        lstPodaci.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstPodaci.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstPodaciValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstPodaci);
+
+        jLabel1.setText("Dostupni Artikli");
+
+        btnArtikli.setText("✚");
+        btnArtikli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArtikliActionPerformed(evt);
+            }
+        });
+
+        cmbStolovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStoloviActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Odaberite stol za narudbu");
+
+        txaNapomena.setColumns(20);
+        txaNapomena.setRows(5);
+        jScrollPane2.setViewportView(txaNapomena);
+
+        lstNarudbe.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstNarudbe.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstNarudbeValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(lstNarudbe);
+
+        jLabel3.setText("Napomena");
+
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
+        btnBrisanje.setText("Obriši");
+        btnBrisanje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrisanjeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPretraga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnArtikli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbStolovi, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))
+                            .addGap(35, 35, 35))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDodaj)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPromjeni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnBrisanje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnArtikli)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnPretraga)
+                        .addComponent(cmbStolovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDodaj)
+                            .addComponent(btnPromjeni))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBrisanje)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3))
+                        .addGap(15, 15, 15))))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtUvjetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUvjetKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            ucitaj();
+        }
+    }//GEN-LAST:event_txtUvjetKeyPressed
+
+    private void btnPretragaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPretragaActionPerformed
+        ucitaj();
+    }//GEN-LAST:event_btnPretragaActionPerformed
+
+    private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        if (lstPodaci.getSelectedValue() == null) {
+            return;
+        }
+        obrada.setEntitet(lstPodaci.getSelectedValue());
+
+        
+    }//GEN-LAST:event_lstPodaciValueChanged
+
+    private void btnArtikliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtikliActionPerformed
+        new ProzorArtikl().setVisible(true);
+    }//GEN-LAST:event_btnArtikliActionPerformed
+
+    private void cmbStoloviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStoloviActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbStoloviActionPerformed
+
+    private void lstNarudbeValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstNarudbeValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lstNarudbeValueChanged
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obradan.setEntitet(new Narudba());
+        napuniModel();
+        try {
+            obradan.create();
+            ucitajNarudbe();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+//        if (lstPodaci.getSelectedValue() == null) {
+//            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite artikl za promjenu");
+//            return;
+//        }
+//        napuniModel();
+//        try {
+//            obrada.update();
+//            txtUvjet.setText(obrada.getEntitet().getNaziv());
+//            ucitaj();
+//        } catch (EdunovaException ex) {
+//            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+//////        }
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
+//        if (lstPodaci.getSelectedValue() == null) {
+//            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite Artikl za brisanje");
+//            return;
+//        }
+//
+//        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigoruno obrisati" + obrada.getEntitet().getNaziv(), "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+//            return;
+//        }
+//
+//        try {
+//            obrada.delete();
+//            ucitaj();
+//        } catch (EdunovaException ex) {
+//            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+//        }
+    }//GEN-LAST:event_btnBrisanjeActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProzorNarucivanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProzorNarucivanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProzorNarucivanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProzorNarucivanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProzorNarucivanje().setVisible(true);
-            }
-        });
+    
+    
+        
+     public void ucitaj(){
+     
+         DefaultListModel<Artikl> m = new DefaultListModel<>();
+         m.addAll(obrada.read(txtUvjet.getText()));
+         lstPodaci.setModel(m);
+         lstPodaci.repaint();
+         
+     }   
+     
+     private void ucitajNarudbe() {
+        DefaultListModel<Narudba> n = new DefaultListModel<>();
+        n.addAll(obradan.read());
+        lstNarudbe.setModel(n);
+        lstNarudbe.repaint();
+        lstNarudbe.repaint();
     }
+     private void ucitajStolove() {
+         DefaultComboBoxModel<Stol> k = new DefaultComboBoxModel<>();
+        Stol a = new Stol();
+        a.setSifra(0);
+        
+        k.addElement(a);
+        k.addAll(new ObradaStol().read());
+        cmbStolovi.setModel(k);
+        cmbStolovi.repaint();
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArtikli;
+    private javax.swing.JButton btnBrisanje;
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnPretraga;
+    private javax.swing.JButton btnPromjeni;
+    private javax.swing.JComboBox<Stol> cmbStolovi;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<Narudba> lstNarudbe;
+    private javax.swing.JList<Artikl> lstPodaci;
+    private javax.swing.JTextArea txaNapomena;
+    private javax.swing.JTextField txtUvjet;
     // End of variables declaration//GEN-END:variables
+
+    private void napuniModel() {
+            var v = obradan.getEntitet();
+            
+            if(txaNapomena.getText().isBlank() ){
+                v.setNapomena("Nema napomene");
+            }else{
+                v.setNapomena(txaNapomena.getText());
+            }
+            v.setStol((Stol) cmbStolovi.getSelectedItem());
+           
+    }
 }

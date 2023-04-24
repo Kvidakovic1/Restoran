@@ -56,7 +56,7 @@ public class Artikl extends Entitet {
 
     @Override
     public String toString() {
-        return naziv + " " + cijena.toString() + " €";
+        return naziv + " - " + cijena.toString() + " €";
     }
     
     

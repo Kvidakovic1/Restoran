@@ -32,11 +32,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton1" max="32767" attributes="0"/>
+                  <Component id="btnStolovi" max="32767" attributes="0"/>
                   <Component id="btnKonobari" pref="118" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Component id="btnArtikli" min="-2" pref="117" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnArtikli" pref="117" max="32767" attributes="0"/>
+                  <Component id="btnNarucivanje" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace pref="98" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -50,7 +53,10 @@
                   <Component id="btnArtikli" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnStolovi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnNarucivanje" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="130" max="32767" attributes="0"/>
               <Component id="btnIzlaz" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -95,12 +101,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArtikliActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnStolovi">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stolovi"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStoloviActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnNarucivanje">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Narucivanje"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNarucivanjeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
