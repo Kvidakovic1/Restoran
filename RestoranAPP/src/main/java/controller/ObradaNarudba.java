@@ -16,22 +16,22 @@ public class ObradaNarudba extends Obrada<Narudba> {
 
     @Override
     public List<Narudba> read() {
-       return session.createQuery("from Stol", Narudba.class).list();
+       return session.createQuery("from Narudba order by Stol asc", Narudba.class).list();
     }
 
     @Override
     protected void kontrolaUnos() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     protected void kontrolaPromjena() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
 }

@@ -5,13 +5,19 @@
 package restoranapp.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Artikl extends Entitet {
      private String naziv;
      private BigDecimal cijena;
      private String kategorija;
+     
+     @ManyToMany(mappedBy = "artikli")
+     private List<Narudba> narudbe = new ArrayList<>();
 
     public String getNaziv() {
         return naziv;
@@ -53,6 +59,15 @@ public class Artikl extends Entitet {
         this.cijena = cijena;
         this.kategorija = kategorija;
     }
+
+    public List<Narudba> getNarudbe() {
+        return narudbe;
+    }
+
+    public void setNarudbe(List<Narudba> narudbe) {
+        this.narudbe = narudbe;
+    }
+    
 
     @Override
     public String toString() {

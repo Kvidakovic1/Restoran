@@ -24,7 +24,7 @@
     <mapping class="restoranapp.model.Stol" />
     <mapping class="restoranapp.model.Narudba" />
     <mapping class="restoranapp.model.Operater" />
-    <mapping class="restoranapp.model.Stavka" />
+<!--    <mapping class="restoranapp.model.Stavka" />-->
     
     
     

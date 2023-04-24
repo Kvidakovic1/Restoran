@@ -59,7 +59,7 @@ public class Stol extends Entitet {
 
     @Override
     public String toString() {
-        return "Broj stola: " +  String.valueOf(brojStola);
+        return "Broj stola: " +  String.valueOf(brojStola) ;
     }
     
     
