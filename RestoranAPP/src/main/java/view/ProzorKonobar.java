@@ -313,10 +313,10 @@ public class ProzorKonobar extends javax.swing.JFrame {
         lstStolovi.setModel(m);
         lstStolovi.repaint();
         
-        btnBrisanje.setVisible(false);
-        if(s.getStolovi()== null || s.getStolovi().isEmpty()){
-            btnBrisanje.setVisible(true);
-        }
-        ucitaj();
+//        btnBrisanje.setVisible(false);
+//        if(s.getStolovi()== null || s.getStolovi().isEmpty()){
+//            btnBrisanje.setVisible(true);
+//        }
+        //ucitaj();
     }
 }

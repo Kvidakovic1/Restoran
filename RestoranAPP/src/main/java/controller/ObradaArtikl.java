@@ -7,6 +7,7 @@ package controller;
 import java.math.BigDecimal;
 import java.util.List;
 import restoranapp.model.Artikl;
+import restoranapp.model.Narudba;
 import restoranapp.model.Entitet;
 import restoranapp.model.Konobar;
 import restoranapp.util.EdunovaException;
@@ -51,7 +52,7 @@ public class ObradaArtikl extends Obrada<Artikl> {
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        
+      
     }
 
     private void kontrolaNaziv() throws EdunovaException {

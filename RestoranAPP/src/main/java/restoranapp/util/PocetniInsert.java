@@ -48,7 +48,7 @@ public class PocetniInsert {
         //kreirajGoste();
         kreirajArtikle();
         kreirajStolove();
-        kreirajNarudbu();
+        //kreirajNarudbu();
         //kreirajStavke();
         session.getTransaction().commit();
 
