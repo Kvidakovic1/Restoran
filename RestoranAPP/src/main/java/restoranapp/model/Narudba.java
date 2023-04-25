@@ -74,7 +74,7 @@ public class Narudba extends Entitet {
 
     @Override
     public String toString() {
-        return  napomena + " " + artikli.size() + " artikala";
+        return  "Stol: " +  String.valueOf(stol.getBrojStola()) + " " + artikli.size() + " artikala";
     }
     
     

@@ -169,6 +169,7 @@ public class ProzorStol extends javax.swing.JFrame {
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Stol());
+        
         napuniModel();
         try {
             obrada.create();

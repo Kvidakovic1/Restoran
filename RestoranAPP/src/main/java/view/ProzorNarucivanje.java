@@ -11,6 +11,7 @@ import controller.ObradaStol;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -341,8 +342,10 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
        return;
        }
        obradaNarudba.setEntitet(lstNarudbe.getSelectedValue());
-       
-        napuniView();
+       napuniView();
+      
+        txaNapomena.setText(lstNarudbe.getSelectedValue().getNapomena());
+        
     }//GEN-LAST:event_lstNarudbeValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed

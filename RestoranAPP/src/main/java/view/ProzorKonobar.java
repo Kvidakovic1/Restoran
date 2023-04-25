@@ -36,6 +36,7 @@ public class ProzorKonobar extends javax.swing.JFrame {
     private void ucitaj() {
         DefaultListModel<Konobar> k = new DefaultListModel<>();
         k.addAll(obrada.read());
+        
         lstPodaci.setModel(k);
         lstPodaci.repaint();
         lstStolovi.repaint();
@@ -219,6 +220,8 @@ public class ProzorKonobar extends javax.swing.JFrame {
         obrada.setEntitet(lstPodaci.getSelectedValue());
         
         napuniView();
+        
+        
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
@@ -227,12 +230,14 @@ public class ProzorKonobar extends javax.swing.JFrame {
             return;
         }
         napuniModel();
+        
         try {
             obrada.update();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
+        
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
@@ -290,18 +295,21 @@ public class ProzorKonobar extends javax.swing.JFrame {
         
     }
     
-    private void napuniView() {
+    /**
+     *
+     */
+    private  void napuniView() {
         var s = obrada.getEntitet();
         
         txtIme.setText(s.getIme());
         txtPrezime.setText(s.getPrezime());
         txtOib.setText(s.getOib());
         txtIban.setText(s.getIban());
-        
         DefaultListModel<Stol> m = new DefaultListModel<>();
         if (s.getStolovi() != null && !s.getStolovi().isEmpty()) {
             m.addAll(s.getStolovi());
         }
+        
         lstStolovi.setModel(m);
         lstStolovi.repaint();
         
@@ -309,5 +317,6 @@ public class ProzorKonobar extends javax.swing.JFrame {
         if(s.getStolovi()== null || s.getStolovi().isEmpty()){
             btnBrisanje.setVisible(true);
         }
+        ucitaj();
     }
 }
