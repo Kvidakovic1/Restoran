@@ -131,7 +131,7 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Odaberite stol za narudbu");
+        jLabel2.setText("Odaberite stol za narudžbu");
 
         txaNapomena.setColumns(20);
         txaNapomena.setRows(5);
@@ -168,7 +168,7 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Narudbe");
+        jLabel4.setText("Narudžbe");
 
         lstArtikliNaNarudbi.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstArtikliNaNarudbi.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -185,7 +185,7 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Artikli na narudbi");
+        jLabel5.setText("Artikli na narudžbi");
 
         btnBrisanjeArtikla.setText("☓");
         btnBrisanjeArtikla.addActionListener(new java.awt.event.ActionListener() {
@@ -228,11 +228,11 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBrisanjeArtikla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(58, 58, 58)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRacun)
                         .addGap(31, 31, 31))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -256,7 +256,7 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnDodaj)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPromjeni, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                                .addComponent(btnPromjeni, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                             .addComponent(btnBrisanje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -392,7 +392,7 @@ public class ProzorNarucivanje extends javax.swing.JFrame {
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigoruno obrisati? " , "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigurno obrisati? " , "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
             return;
         }
 

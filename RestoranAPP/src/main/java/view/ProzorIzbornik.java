@@ -105,7 +105,7 @@ public class ProzorIzbornik extends javax.swing.JFrame {
             }
         });
 
-        btnNarucivanje.setText("Narucivanje");
+        btnNarucivanje.setText("Naručivanje");
         btnNarucivanje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNarucivanjeActionPerformed(evt);

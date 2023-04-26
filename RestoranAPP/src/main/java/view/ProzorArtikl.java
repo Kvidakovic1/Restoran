@@ -283,7 +283,7 @@ public class ProzorArtikl extends javax.swing.JFrame {
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigoruno obrisati " + obrada.getEntitet().getNaziv(), "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigurno obrisati " + obrada.getEntitet().getNaziv(), "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
             return;
         }
 

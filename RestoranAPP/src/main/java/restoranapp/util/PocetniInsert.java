@@ -48,7 +48,7 @@ public class PocetniInsert {
         //kreirajGoste();
         kreirajArtikle();
         kreirajStolove();
-        //kreirajNarudbu();
+        kreirajNarudbu();
         //kreirajStavke();
         session.getTransaction().commit();
 
@@ -56,7 +56,7 @@ public class PocetniInsert {
 
     private void kreirajKonobare() {
         Konobar k;
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < 10; i++) {
             k = new Konobar();
             k.setIme(faker.name().firstName());
             k.setPrezime(faker.name().lastName());
@@ -115,7 +115,7 @@ public class PocetniInsert {
         for (int i = 0; i < 10; i++) {
             s = new Stol();
             s.setBrojStola(i + 1);
-            s.setKonobar(konobari.get(sb(0, 20)));
+            s.setKonobar(konobari.get(sb(0, 9)));
             
             
             
@@ -128,12 +128,12 @@ public class PocetniInsert {
     private void kreirajNarudbu() {
         Narudba n;
         List<Artikl> a;
-        for(int i = 0; i <100;i++){
+        for(int i = 0; i <5;i++){
             n = new Narudba();
             n.setNapomena(faker.ancient().titan());
             n.setStol(stolovi.get(sb(0,stolovi.size()-1)));
             a = new ArrayList<>();
-            for(int j = 0; j<sb(1, 10);j++){
+            for(int j = 0; j<sb(1, 4);j++){
                 a.add(artikli.get(sb(0, artikli.size()-1)));
             }
             
